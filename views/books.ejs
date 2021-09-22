@@ -10,28 +10,28 @@
 </head>
 <body>
 <h1><%= title %></h1>
+<a href="/books/create">Ajouter un livre</a>
 <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Processeur</th>
-            <th scope="col">Console</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Joueur max</th>
-            <th scope="col">Commentaire</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Author</th>
+            <th scope="col">date_published</th>
+            <th scope="col">slug</th>
         </tr>
     </thead>
     <tbody>
         <% for (book in books) {%>
             <tr>
-                <th scope="row"><%= book.id%></th>
-                <td><%= book.nom%></td>
-                <td><%= book.processeur%></td>
-                <td><%= book.console%></td>
-                <td><%= book.prix%></td>
-                <td><%= book.nbre_joueur_max%></td>
-                <td><%= book.commentaires%></td>
+                <th scope="row">
+                    <a href="/books/update/<%= books[book].id %>">Update</a>
+                    <a href="/books/delete/<%= books[book].id %>">Delete</a>
+                </th>
+                <td><%= books[book].title %></td>
+                <td><%= books[book].author %></td>
+                <td><%= moment(books[book].date_published).format('L') %></td>
+                <td><%= books[book].slug %></td>
             </tr>
         <% } %>
     </tbody>
